@@ -37,6 +37,7 @@ public class StartingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO create user account
+
             }
         });
 
