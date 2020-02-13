@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">E_Commerce</string>
+
+
+    <!--welcome screen text-->
+    <string name="sign_in">Already a customer? Sign in</string>
+    <string name="create_acount">New to E_commerce? Create account</string>
+    <string name="skip_sign_in">Skip sign in</string>
+
+
 </resources>
