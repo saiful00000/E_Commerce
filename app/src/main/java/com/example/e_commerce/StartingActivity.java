@@ -28,16 +28,14 @@ public class StartingActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO user login
-
+                startActivity(new Intent(StartingActivity.this, LoginActivity.class));
             }
         });
 
         createAcButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO create user account
-
+                startActivity(new Intent(StartingActivity.this, RegisterActivity.class));
             }
         });
 

@@ -4,9 +4,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".RegisterActivity">
 
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/editetext_background"
+        android:id="@+id/email_et_id"
+        android:hint="Email..."
+        android:padding="5dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/editetext_background"
+        android:id="@+id/password_et_id"
+        android:hint="Password..."
+        android:padding="5dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/create_account_btn_id"
+        android:text="Create account"
+        android:textAllCaps="false"
+        android:background="@drawable/editetext_background"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="15dp"
+        />
 
 
 </LinearLayout>

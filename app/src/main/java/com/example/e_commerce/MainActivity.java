@@ -1,12 +1,18 @@
 package com.example.e_commerce;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseUser currentUser;
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference rootReference;
 
 
     @Override
@@ -35,7 +42,31 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser == null) {
             startActivity(new Intent(MainActivity.this, StartingActivity.class));
         } else {
-            //TODO is current user loged in
+            verifyUserExistance();
         }
+    }
+
+    private void verifyUserExistance() {
+        String currentUserId = firebaseAuth.getCurrentUser().getUid();
+
+        rootReference.child("Users").child(currentUserId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if ((dataSnapshot.child("name").exists())) {
+                    Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
+                } else {
+                    sendUserToUpdateProfileActivity();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void sendUserToUpdateProfileActivity() {
+        //TODO update frofile
     }
 }
