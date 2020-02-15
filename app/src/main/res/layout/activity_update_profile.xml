@@ -1,9 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".UpdateProfileActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/name_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="Name"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/phone_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="Phone"
+                android:layout_marginTop="10dp"
+                android:padding="5dp" />
+
+            <EditText
+                android:layout_marginTop="10dp"
+                android:id="@+id/mail_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="Mail"
+                android:padding="5dp" />
+
+            <EditText
+                android:layout_marginTop="10dp"
+                android:id="@+id/address_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="Full Address"
+                android:padding="5dp" />
+
+            <Button
+                android:id="@+id/update_btn_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="40dp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/editetext_background"
+                android:text="Update your profile"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

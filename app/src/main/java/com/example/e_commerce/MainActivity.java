@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
                 } else {
                     sendUserToUpdateProfileActivity();
-
                 }
             }
 
@@ -69,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendUserToUpdateProfileActivity() {
-
+        startActivity(new Intent(MainActivity.this, UpdateProfileActivity.class));
+        finish();
     }
 }

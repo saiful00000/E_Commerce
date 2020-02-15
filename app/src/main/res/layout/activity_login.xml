@@ -8,6 +8,7 @@
     tools:context=".LoginActivity">
 
 
+
     <EditText
         android:id="@+id/email_et_id"
         android:layout_width="match_parent"
