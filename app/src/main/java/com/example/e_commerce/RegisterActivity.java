@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText emailEditText, passwordEditText;
     private Button createAccountButton;
+    private TextView goLoginActivityTv;
 
     private ProgressDialog progressDialog;
 
@@ -48,8 +50,18 @@ public class RegisterActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.email_et_id);
         passwordEditText = findViewById(R.id.password_et_id);
         createAccountButton = findViewById(R.id.create_account_btn_id);
+        goLoginActivityTv = findViewById(R.id.go_to_login_activity_tv_id);
+
 
         progressDialog = new ProgressDialog(this);
+
+        goLoginActivityTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                finish();
+            }
+        });
 
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override

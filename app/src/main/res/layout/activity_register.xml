@@ -41,6 +41,19 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="15dp"
+        android:textColor="@color/colorPrimary"
+        />
+
+    <TextView
+        android:id="@+id/go_to_login_activity_tv_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Have an account? Login"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         />
 
 
