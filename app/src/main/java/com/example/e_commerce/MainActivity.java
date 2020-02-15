@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
         rootReference.child("Users").child(currentUserId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if ((dataSnapshot.child("name").exists())) {
+                // if profile information is empty then send user to update profile activity
+                if ((!dataSnapshot.child("name").getValue().equals(""))) {
                     Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
                 } else {
                     sendUserToUpdateProfileActivity();

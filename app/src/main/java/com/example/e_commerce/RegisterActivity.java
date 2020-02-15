@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.e_commerce.models.UserProfile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -90,8 +91,9 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                UserProfile userProfile = new UserProfile("","","","");
                                 String currentUserId = firebaseAuth.getCurrentUser().getUid();
-                                rootReference.child(currentUserId).setValue("");
+                                rootReference.child(currentUserId).setValue(userProfile);
                                 Log.d(TAG, "createUserWithEmail: success");
                                 progressDialog.dismiss();
                                 sendUserToMainActivity();
