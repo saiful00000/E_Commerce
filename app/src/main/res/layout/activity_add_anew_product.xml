@@ -7,10 +7,39 @@
     android:orientation="vertical"
     tools:context=".AddANewProductActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add a new Product"
-        />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/laptop">
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/pc"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
+            />
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
+            />
+
+    </LinearLayout>
 
 </LinearLayout>
