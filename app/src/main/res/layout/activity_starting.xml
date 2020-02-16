@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:background="@drawable/editetext_background"
         android:text="@string/sign_in"
         android:textAllCaps="false" />
 
@@ -20,6 +21,8 @@
         android:id="@+id/create_account_btn_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/editetext_background"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:text="@string/create_acount"
@@ -27,9 +30,11 @@
 
     <Button
         android:id="@+id/skip_btn_id"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
+        android:background="@drawable/editetext_background"
         android:layout_marginRight="15dp"
         android:text="@string/skip_sign_in"
         android:textAllCaps="false" />
