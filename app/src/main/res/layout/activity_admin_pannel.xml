@@ -22,12 +22,30 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/all_products_btn_id"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Admin Pannel"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:text="All products"
+            android:textAllCaps="false"
+            android:background="@drawable/editetext_background"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+
+            />
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:id="@+id/add_product_btn_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add a product"
+            android:textAllCaps="false"
+            android:background="@drawable/editetext_background"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+
+            />
 
     </LinearLayout>
 

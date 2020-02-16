@@ -8,12 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminPannelActivity extends AppCompatActivity {
 
-
+    private Button allProductBtn, addProductBtn;
     private Toolbar toolbar;
 
     private FirebaseAuth firebaseAuth;
@@ -26,9 +27,14 @@ public class AdminPannelActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        allProductBtn = findViewById(R.id.all_products_btn_id);
+        addProductBtn = findViewById(R.id.add_product_btn_id);
         toolbar = findViewById(R.id.admn_toolbar_id);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Admin Pannel");
+
+
 
     }
 
