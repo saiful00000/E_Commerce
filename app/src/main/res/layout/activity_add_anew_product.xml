@@ -7,38 +7,120 @@
     android:orientation="vertical"
     tools:context=".AddANewProductActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="Select Category"
+        android:layout_marginBottom="30dp"
+        android:textSize="20sp"
+        />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/laptop">
+        <LinearLayout
+            android:background="@drawable/editetext_background"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp">
 
-        </ImageView>
+            <ImageView
+                android:id="@+id/laptop_image_btn_id"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/laptop">
+            </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Laptop"
+                android:textColor="@android:color/black"
+                />
 
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/pc"
-            />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/editetext_background"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_marginLeft="5dp">
+
+            <ImageView
+                android:id="@+id/desktop_image_btn_id"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/pc" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Desktop"
+                android:textColor="@android:color/black"
+                />
+
+        </LinearLayout>
+
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
 
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+        <LinearLayout
+            android:background="@drawable/editetext_background"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp">
 
-            />
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            <ImageView
+                android:id="@+id/android_image_btn_id"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/android" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Android"
+                android:textColor="@android:color/black"
+                />
 
-            />
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="5dp"
+            android:background="@drawable/editetext_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginLeft="5dp">
+
+            <ImageView
+                android:id="@+id/iphone_image_btn_id"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/iphone" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="iPhone"
+                android:textColor="@android:color/black"
+                />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

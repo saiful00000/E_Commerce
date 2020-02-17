@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UploadProductActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/prod_image_imageView_id"
+                android:layout_width="250dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/editetext_background"
+                android:src="@android:drawable/ic_menu_report_image" />
+
+            <EditText
+                android:id="@+id/prod_name_tv_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="Product Name"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/prod_brand_name_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="Band Name"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/prod_price_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="Product Price"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/prod_description_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:gravity="start"
+                android:hint="Product Description"
+                android:padding="5dp" />
+
+            <Button
+                android:id="@+id/prod_upload_btn_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/editetext_background"
+                android:elevation="8dp"
+                android:text="Uoload Product"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
