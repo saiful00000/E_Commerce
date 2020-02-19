@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("E Commerce");
+        //getSupportActionBar().setTitle("E Commerce");
 
 
         // check user existence

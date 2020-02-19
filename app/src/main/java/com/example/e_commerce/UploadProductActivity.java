@@ -114,45 +114,36 @@ public class UploadProductActivity extends AppCompatActivity {
             currentTime = timeFormate.format(calendar.getTime());
 
             // set product random key
-            productRandomKey = currentDate + currentTime;
+            //productRandomKey = currentDate + currentTime;
 
-            final StorageReference filePath = productImageReference.child(prodImageUri.getLastPathSegment() + productRandomKey + ".jpg");
+            if (prodImageUri != null) {
+                showProgressDialog();
+                final StorageReference ref = productImageReference.child(prodImageUri.getLastPathSegment() + productRandomKey + ".jpg");
+                ref.putFile(prodImageUri)
+                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        imageDownloadUrl = uri.toString();
+                                        Toast.makeText(UploadProductActivity.this, "Image uploaded", Toast.LENGTH_SHORT).show();
+                                        uploadProductDataToDatabase();
+                                        refreshTheCurrentActivity();
+                                        progressDialog.dismiss();
+                                    }
+                                });
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(UploadProductActivity.this, "Image upload failed", Toast.LENGTH_SHORT).show();
+                        Log.e("imageUploadError", e.toString());
+                        progressDialog.dismiss();
+                    }
+                });
+            }
 
-            final UploadTask uploadTask = filePath.putFile(prodImageUri);
-            uploadTask.addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    String error = e.toString();
-                    Toast.makeText(UploadProductActivity.this, "Error: ", Toast.LENGTH_SHORT).show();
-                    Log.e("productImageUploadError", error);
-                }
-            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Log.i("produCtImageUpload", "Image uploaded successfuly");
-                    Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                        @Override
-                        public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                            if (!task.isSuccessful()) {
-                                progressDialog.dismiss();
-                                throw task.getException();
-                            }
-                            imageDownloadUrl = filePath.getDownloadUrl().toString();
-                            return filePath.getDownloadUrl();
-                        }
-                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Uri> task) {
-                            if (task.isSuccessful()) {
-                                uploadProductDataToDatabase();
-                                progressDialog.dismiss();
-                                refreshTheCurrentActivity();
-                            }
-                            progressDialog.dismiss();
-                        }
-                    });
-                }
-            });
         }
     }
 
@@ -165,6 +156,8 @@ public class UploadProductActivity extends AppCompatActivity {
     private void uploadProductDataToDatabase() {
         Intent intent = getIntent();
         category = intent.getStringExtra("category");
+
+        productRandomKey = productReference.push().getKey();
 
         Map<String, Object> product = new HashMap<>();
         product.put("key", productRandomKey);
