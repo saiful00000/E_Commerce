@@ -1,4 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:title="Contents">
+        <menu>
+            <item
+                android:icon="@drawable/ic_add_shopping_cart_black_24dp"
+                android:id="@+id/d_menu_cart_id"
+                android:title="Cart" />
+            <item
+                android:icon="@drawable/ic_bookmark_order_black_24dp"
+                android:id="@+id/d_menu_order_id"
+                android:title="Orders" />
+
+            <item
+                android:icon="@drawable/ic_format_list_category_black_24dp"
+                android:id="@+id/d_menu_category_id"
+                android:title="Category" />
+
+        </menu>
+    </item>
+
+    <item android:title="Activity">
+        <menu>
+            <item
+                android:id="@+id/d_menu_settings_id"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="Settings" />
+            <item
+                android:id="@+id/d_menu_logout_id"
+                android:icon="@drawable/logout"
+                android:title="LOgout" />
+
+        </menu>
+    </item>
+
 </menu>

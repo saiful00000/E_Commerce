@@ -1,8 +1,10 @@
 package com.example.e_commerce;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,10 +22,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
 
     private FirebaseUser currentUser;
     private FirebaseAuth firebaseAuth;
@@ -40,11 +45,23 @@ public class MainActivity extends AppCompatActivity {
 
         // initialize views
         toolbar = findViewById(R.id.toolbarId);
-
+        drawerLayout = findViewById(R.id.drawer_layout_id);
+        navigationView = findViewById(R.id.nav_view_id);
 
         setSupportActionBar(toolbar);
         //getSupportActionBar().setTitle("E Commerce");
 
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                toolbar,
+                R.string.nav_drawer_open,
+                R.string.nav_drawer_close
+        );
+
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
 
         // check user existence
         checkCurrentUserLogin();
@@ -117,5 +134,38 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth.signOut();
         startActivity(new Intent(MainActivity.this, StartingActivity.class));
         finish();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.d_menu_cart_id:
+                toast("cart");
+                return true;
+            case R.id.d_menu_category_id:
+                toast("category");
+                return true;
+            case R.id.d_menu_order_id:
+                toast("order");
+                return true;
+            case R.id.d_menu_settings_id:
+                toast("settings");
+                return true;
+            case R.id.d_menu_logout_id:
+                toast("logout");
+                return true;
+            default:
+                return false;
+        }
+
+    }
+
+    private void toast(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }
