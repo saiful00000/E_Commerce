@@ -22,6 +22,7 @@ import com.example.e_commerce.models.Product;
 import com.example.e_commerce.viewHolders.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private RecyclerView recyclerView;
+    private FloatingActionButton cartButton;
 
     private FirebaseUser currentUser;
     private FirebaseAuth firebaseAuth;
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer_layout_id);
         navigationView = findViewById(R.id.nav_view_id);
         recyclerView = findViewById(R.id.main_recyclerView_id);
+        cartButton = findViewById(R.id.cart_btn_id);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -81,6 +84,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+        cartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CartListActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -90,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // check user existence
         checkCurrentUserLogin();
 
-        FirebaseRecyclerOptions <Product> options = new FirebaseRecyclerOptions.Builder<Product>()
+        FirebaseRecyclerOptions<Product> options = new FirebaseRecyclerOptions.Builder<Product>()
                 .setQuery(productsRreReference, Product.class)
                 .build();
 
