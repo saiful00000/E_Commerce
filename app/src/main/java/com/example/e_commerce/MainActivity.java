@@ -5,14 +5,23 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.e_commerce.models.Product;
+import com.example.e_commerce.viewHolders.ProductViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,6 +30,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,10 +38,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private RecyclerView recyclerView;
 
     private FirebaseUser currentUser;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference rootReference;
+    private DatabaseReference productsRreReference;
 
 
     @Override
@@ -42,11 +54,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // initialize all firebase instances
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
+        productsRreReference = FirebaseDatabase.getInstance().getReference().child("Products");
 
         // initialize views
         toolbar = findViewById(R.id.toolbarId);
         drawerLayout = findViewById(R.id.drawer_layout_id);
         navigationView = findViewById(R.id.nav_view_id);
+        recyclerView = findViewById(R.id.main_recyclerView_id);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
         setSupportActionBar(toolbar);
         //getSupportActionBar().setTitle("E Commerce");
@@ -63,9 +81,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
         // check user existence
         checkCurrentUserLogin();
 
+        FirebaseRecyclerOptions <Product> options = new FirebaseRecyclerOptions.Builder<Product>()
+                .setQuery(productsRreReference, Product.class)
+                .build();
+
+        FirebaseRecyclerAdapter<Product, ProductViewHolder> adapter =
+                new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
+                    @Override
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int i, @NonNull Product product) {
+                        Picasso.get().load(product.getImage()).into(holder.productImageView);
+                        holder.productNameTv.setText(product.getName());
+                        holder.productPriceTv.setText(product.getPrice() + " tk");
+                        holder.productDescriptionTv.setText(product.getDescription());
+                    }
+
+                    @NonNull
+                    @Override
+                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item_layout, parent, false);
+                        ProductViewHolder holder = new ProductViewHolder(view);
+                        return holder;
+                    }
+                };
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
     }
 
     private void checkCurrentUserLogin() {

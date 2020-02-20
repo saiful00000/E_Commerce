@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="15dp"
-    android:layout_marginTop="20dp"
+    android:layout_marginTop="9dp"
+    android:layout_marginBottom="9dp"
     android:layout_marginRight="15dp"
     app:cardElevation="15dp">
 
@@ -26,11 +27,13 @@
             android:id="@+id/product_image_view_id"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
+            android:scaleType="centerCrop"
             android:layout_below="@+id/product_name_tv_id"
-            android:src="@drawable/lenovo" />
+             />
 
         <TextView
+            android:id="@+id/product_price_tv_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -39,6 +42,19 @@
             android:textSize="17sp"
             android:textColor="@android:color/black"
             android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/product_description_tv_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/product_price_tv_id"
+            android:text="Product description"
+            android:textSize="17sp"
+            android:textColor="@android:color/black"
+            android:textAlignment="center"
+            android:layout_marginBottom="5dp"
             />
 
     </RelativeLayout>
