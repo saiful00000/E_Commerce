@@ -97,11 +97,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FirebaseRecyclerAdapter<Product, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int i, @NonNull Product product) {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int i, @NonNull final Product product) {
                         Picasso.get().load(product.getImage()).into(holder.productImageView);
                         holder.productNameTv.setText(product.getName());
                         holder.productPriceTv.setText(product.getPrice() + " tk");
                         holder.productDescriptionTv.setText(product.getDescription());
+
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(MainActivity.this, ProductsDetailsActivity.class);
+                                intent.putExtra("prodKey", product.getKey());
+                                startActivity(intent);
+                            }
+                        });
                     }
 
                     @NonNull
