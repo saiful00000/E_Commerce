@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginRight="15dp"
+    app:cardElevation="15dp">
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/product_name_tv_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Product Name"
+            android:textSize="20sp"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/product_image_view_id"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/product_name_tv_id"
+            android:src="@drawable/lenovo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/product_image_view_id"
+            android:text="Product description"
+            android:textSize="17sp"
+            android:textColor="@android:color/black"
+            android:textAlignment="center"
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
