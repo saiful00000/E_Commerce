@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CartListActivity">
 
+
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/c_price_tv_id"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cart list"
+        android:text="Total Price = "
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_orange_dark"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/c_recycler_view_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/c_price_tv_id"
+        android:layout_above="@+id/c_order_button_id"
+        />
+
+
+    <Button
+        android:id="@+id/c_order_button_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/editetext_background"
+        android:text="Make your order"
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="false"
+        />
 
 </RelativeLayout>

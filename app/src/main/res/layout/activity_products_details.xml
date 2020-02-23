@@ -75,12 +75,22 @@
             <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
                 android:id="@+id/delegation_number_button_id"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="20dp"
                 app:finalNumber="10"
                 app:initialNumber="1" />
+
+            <Button
+                android:id="@+id/add_to_cart_btn_id"
+                android:layout_gravity="center"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Add to cart"
+                android:textAllCaps="false"
+                android:background="@drawable/editetext_background"
+                />
 
 
         </LinearLayout>
@@ -88,16 +98,5 @@
     </ScrollView>
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/cart_fab_btn_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:backgroundTint="@android:color/white"
-        android:elevation="6dp"
-        android:src="@drawable/ic_add_shopping_cart_black_24dp"
-        app:borderWidth="0dp"
-        app:useCompatPadding="true" />
 
 </RelativeLayout>

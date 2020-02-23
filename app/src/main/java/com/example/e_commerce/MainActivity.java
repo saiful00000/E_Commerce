@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.d_menu_cart_id:
-                toast("cart");
+                startActivity(new Intent(MainActivity.this, CartListActivity.class));
                 return true;
             case R.id.d_menu_category_id:
                 toast("category");
