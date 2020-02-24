@@ -33,6 +33,7 @@ public class CartListActivity extends AppCompatActivity {
     private DatabaseReference cartReference;
 
     private String currentUserId;
+    private int itemCnt, totalPriceOfAllProduct = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,17 @@ public class CartListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
 
+        prodOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                proccessOrder();
+            }
+        });
 
+    }
+
+    private void proccessOrder() {
+        Toast.makeText(this, Integer.toString(itemCnt), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -70,9 +81,23 @@ public class CartListActivity extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<CartItem, CartViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, int i, @NonNull final CartItem cartItem) {
+
+                        int price = Integer.valueOf(cartItem.getPrice()) * Integer.valueOf(cartItem.getQuantity());
+                        totalPriceOfAllProduct += price;
+
+                        prodPriceTv.setText("Total = " + totalPriceOfAllProduct + " tk");
+
                         cartViewHolder.productNameTv.setText(cartItem.getName());
-                        cartViewHolder.productPriceTv.setText("Price "+ cartItem.getPrice() +" tk");
-                        cartViewHolder.productQuantityTv.setText(cartItem.getQuantity());
+                        cartViewHolder.productPriceTv.setText("Price "+ Integer.toString(price) +" tk");
+                        cartViewHolder.productQuantityTv.setText(cartItem.getQuantity() + " piece");
+                        
+                        cartViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(CartListActivity.this, "", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        
                         cartViewHolder.removeCartItemButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -80,6 +105,12 @@ public class CartListActivity extends AppCompatActivity {
                                 deleteCartItem(productKey);
                             }
                         });
+                    }
+
+                    @Override
+                    public int getItemCount() {
+                        itemCnt = super.getItemCount();
+                        return super.getItemCount();
                     }
 
                     @NonNull
@@ -92,6 +123,7 @@ public class CartListActivity extends AppCompatActivity {
                 };
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+
     }
 
     private void deleteCartItem(String productKey) {
