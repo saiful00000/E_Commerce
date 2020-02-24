@@ -2,6 +2,7 @@ package com.example.e_commerce.viewHolders;
 
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import com.example.e_commerce.interfaces.ProductItemClickListenner;
 public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView productNameTv, productQuantityTv, productPriceTv;
+    public ImageButton removeCartItemButton;
     private ProductItemClickListenner itemClickListenner;
 
 
@@ -22,6 +24,8 @@ public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         productNameTv = itemView.findViewById(R.id.cart_product_name_tv_id);
         productPriceTv = itemView.findViewById(R.id.cart_product_price_tv_id);
         productQuantityTv = itemView.findViewById(R.id.cart_product_quantity_tv_id);
+        removeCartItemButton = itemView.findViewById(R.id.cart_item_remove_button_id);
+
 
     }
 
