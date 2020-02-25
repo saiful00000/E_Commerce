@@ -36,6 +36,7 @@
         android:layout_alignParentBottom="true"
         android:textAllCaps="false"
         android:elevation="10dp"
+        android:textColor="@android:color/holo_red_dark"
         />
 
 </RelativeLayout>

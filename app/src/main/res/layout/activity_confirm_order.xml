@@ -1,9 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ConfirmOrderActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/total_price_tv_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:text="Total price"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_orange_dark"
+
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/riceiver_name_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="Product reciver name"
+                android:padding="5dp"
+
+                />
+
+            <EditText
+                android:id="@+id/riceiver_phone_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="Product reciver phone Number"
+                android:padding="5dp"
+
+                />
+
+            <EditText
+                android:id="@+id/riceiver_city_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="City name"
+                android:padding="5dp"
+
+                />
+
+            <EditText
+                android:id="@+id/riceiver_area_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="Area name"
+                android:padding="5dp"
+
+                />
+
+            <EditText
+                android:id="@+id/riceiver_sector_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="Sector number"
+                android:padding="5dp"
+
+                />
+
+            <EditText
+                android:id="@+id/riceiver_roadnumber_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="Road number"
+                android:padding="5dp"
+
+                />
+
+            <EditText
+                android:id="@+id/riceiver_housenumber_et_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/editetext_background"
+                android:hint="House number"
+                android:padding="5dp"
+
+                />
+
+            <Button
+                android:id="@+id/order_confirm_button_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"
+                android:textAllCaps="false"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/editetext_background"
+                android:text="Confirm Order" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

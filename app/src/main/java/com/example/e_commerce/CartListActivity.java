@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,7 +63,9 @@ public class CartListActivity extends AppCompatActivity {
     }
 
     private void proccessOrder() {
-        Toast.makeText(this, Integer.toString(itemCnt), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(CartListActivity.this, ConfirmOrderActivity.class);
+        intent.putExtra("price", totalPriceOfAllProduct);
+        startActivity(intent);
     }
 
     @Override
