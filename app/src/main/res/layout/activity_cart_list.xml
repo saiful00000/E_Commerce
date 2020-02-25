@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/editetext_background"
-        android:text="Make your order"
+        android:text=" Make Order"
         android:layout_alignParentBottom="true"
         android:textAllCaps="false"
         android:elevation="10dp"
