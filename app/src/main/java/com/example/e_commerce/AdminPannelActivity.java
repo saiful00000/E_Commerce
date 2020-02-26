@@ -79,6 +79,15 @@ public class AdminPannelActivity extends AppCompatActivity {
     private void openCategoryPopUpMenu(View view) {
         PopupMenu popupMenu = new PopupMenu(AdminPannelActivity.this, view);
         popupMenu.getMenuInflater().inflate(R.menu.category_menu, popupMenu.getMenu());
+
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                //TODO on menu item select
+                return false;
+            }
+        });
+
         popupMenu.show();
     }
 
