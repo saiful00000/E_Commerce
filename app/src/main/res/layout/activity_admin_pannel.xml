@@ -7,14 +7,19 @@
     android:orientation="vertical"
     tools:context=".AdminPannelActivity">
 
-
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_id"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:id="@+id/admn_toolbar_id"
+        android:layout_height="wrap_content">
 
-        />
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:id="@+id/admn_toolbar_id"
+            android:background="@android:color/white"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

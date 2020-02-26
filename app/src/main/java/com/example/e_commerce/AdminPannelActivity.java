@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -60,13 +61,25 @@ public class AdminPannelActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.admin_category_menu_item_id:
+                View  view = findViewById(R.id.admin_category_menu_item_id);
+                openCategoryPopUpMenu(view);
+                return true;
             case R.id.admin_menu_log_out_id:
                 userSignIn();
+                return true;
             case R.id.admin_menu_setting_id:
                 //Todo
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void openCategoryPopUpMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(AdminPannelActivity.this, view);
+        popupMenu.getMenuInflater().inflate(R.menu.category_menu, popupMenu.getMenu());
+        popupMenu.show();
     }
 
     private void userSignIn() {

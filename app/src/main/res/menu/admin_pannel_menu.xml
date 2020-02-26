@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <item
+        android:title="Category"
+        android:id="@+id/admin_category_menu_item_id"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_format_list_bulleted_black_24dp"
+        />
     <item
         android:id="@+id/admin_menu_log_out_id"
         android:title="Log out">
