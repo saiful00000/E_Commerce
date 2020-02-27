@@ -61,10 +61,6 @@ public class AdminPannelActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.admin_category_menu_item_id:
-                View  view = findViewById(R.id.admin_category_menu_item_id);
-                openCategoryPopUpMenu(view);
-                return true;
             case R.id.admin_menu_log_out_id:
                 userSignIn();
                 return true;
@@ -74,21 +70,6 @@ public class AdminPannelActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    private void openCategoryPopUpMenu(View view) {
-        PopupMenu popupMenu = new PopupMenu(AdminPannelActivity.this, view);
-        popupMenu.getMenuInflater().inflate(R.menu.category_menu, popupMenu.getMenu());
-
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                //TODO on menu item select
-                return false;
-            }
-        });
-
-        popupMenu.show();
     }
 
     private void userSignIn() {

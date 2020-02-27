@@ -81,6 +81,7 @@
                 android:elevation="8dp"
                 android:text="Uoload Product"
                 android:textAllCaps="false"
+                android:layout_marginBottom="30dp"
                 android:textColor="@color/colorPrimary" />
 
         </LinearLayout>
