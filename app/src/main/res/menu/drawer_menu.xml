@@ -4,20 +4,35 @@
     <item android:title="Contents">
         <menu>
             <item
-                android:icon="@drawable/ic_add_shopping_cart_black_24dp"
                 android:id="@+id/d_menu_cart_id"
+                android:icon="@drawable/ic_add_shopping_cart_black_24dp"
                 android:title="Cart" />
             <item
-                android:icon="@drawable/ic_bookmark_order_black_24dp"
                 android:id="@+id/d_menu_order_id"
+                android:icon="@drawable/ic_bookmark_order_black_24dp"
                 android:title="Orders" />
 
-            <item
-                android:icon="@drawable/ic_format_list_category_black_24dp"
-                android:id="@+id/d_menu_category_id"
-                android:title="Category" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/d_menu_category_id"
+        android:icon="@drawable/ic_format_list_category_black_24dp"
+        android:title="Category">
+
+        <menu>
+
+            <item android:id="@+id/nav_laptop_menu_item_id"
+                android:title="     Laptop"/>
+            <item android:id="@+id/nav_desktop_menu_item_id"
+                android:title="     Desktop"/>
+            <item android:id="@+id/nav_android_menu_item_id"
+                android:title="     Android"/>
+            <item android:id="@+id/nav_iphone_menu_item_id"
+                android:title="     iPhone"/>
 
         </menu>
+
     </item>
 
     <item android:title="Activity">
@@ -29,7 +44,7 @@
             <item
                 android:id="@+id/d_menu_logout_id"
                 android:icon="@drawable/logout"
-                android:title="LOgout" />
+                android:title="Logout" />
 
         </menu>
     </item>

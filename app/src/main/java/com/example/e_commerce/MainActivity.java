@@ -30,6 +30,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FirebaseAuth firebaseAuth;
     private DatabaseReference rootReference;
     private DatabaseReference productsRreReference;
+
+    private String category = "";
 
 
     @Override
@@ -97,44 +100,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
-
         // check user existence
         checkCurrentUserLogin();
 
-        FirebaseRecyclerOptions<Product> options = new FirebaseRecyclerOptions.Builder<Product>()
-                .setQuery(productsRreReference, Product.class)
-                .build();
-
-        FirebaseRecyclerAdapter<Product, ProductViewHolder> adapter =
-                new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
-                    @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int i, @NonNull final Product product) {
-                        Picasso.get().load(product.getImage()).into(holder.productImageView);
-                        holder.productNameTv.setText(product.getName());
-                        holder.productPriceTv.setText(product.getPrice() + " tk");
-                        holder.productDescriptionTv.setText(product.getDescription());
-
-                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(MainActivity.this, ProductsDetailsActivity.class);
-                                intent.putExtra("prodKey", product.getKey());
-                                startActivity(intent);
-                            }
-                        });
-                    }
-
-                    @NonNull
-                    @Override
-                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item_layout, parent, false);
-                        ProductViewHolder holder = new ProductViewHolder(view);
-                        return holder;
-                    }
-                };
-        recyclerView.setAdapter(adapter);
-        adapter.startListening();
+        showProductOnRecyClerView();
     }
+
 
     private void checkCurrentUserLogin() {
         if (currentUser == null) {
@@ -175,6 +146,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    private void showProductOnRecyClerView() {
+        // make query based on category
+        Query query;
+        if (category.equals("")) {
+            query = productsRreReference;
+        } else {
+            query = productsRreReference.orderByChild("category").equalTo(category);
+        }
+
+        FirebaseRecyclerOptions<Product> options = new FirebaseRecyclerOptions.Builder<Product>()
+                .setQuery(query, Product.class)
+                .build();
+
+        FirebaseRecyclerAdapter<Product, ProductViewHolder> adapter =
+                new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
+                    @Override
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int i, @NonNull final Product product) {
+                        Picasso.get().load(product.getImage()).into(holder.productImageView);
+                        holder.productNameTv.setText(product.getName());
+                        holder.productPriceTv.setText(product.getPrice() + " tk");
+                        holder.productDescriptionTv.setText(product.getDescription());
+
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(MainActivity.this, ProductsDetailsActivity.class);
+                                intent.putExtra("prodKey", product.getKey());
+                                startActivity(intent);
+                            }
+                        });
+                    }
+
+                    @NonNull
+                    @Override
+                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item_layout, parent, false);
+                        ProductViewHolder holder = new ProductViewHolder(view);
+                        return holder;
+                    }
+                };
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+    }
+
     private void sendUserToUpdateProfileActivity() {
         startActivity(new Intent(MainActivity.this, UpdateProfileActivity.class));
         finish();
@@ -210,9 +225,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.d_menu_cart_id:
                 startActivity(new Intent(MainActivity.this, CartListActivity.class));
                 return true;
-            case R.id.d_menu_category_id:
-                toast("category");
-                return true;
             case R.id.d_menu_order_id:
                 toast("order");
                 return true;
@@ -220,7 +232,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 toast("settings");
                 return true;
             case R.id.d_menu_logout_id:
-                toast("logout");
+                userSignOut();
+                return true;
+            case R.id.nav_laptop_menu_item_id:
+                toast("laptop");
+                return true;
+            case R.id.nav_desktop_menu_item_id:
+                toast("desktop");
+                return true;
+            case R.id.nav_android_menu_item_id:
+                toast("android");
+                return true;
+            case R.id.nav_iphone_menu_item_id:
+                toast("iphone");
                 return true;
             default:
                 return false;
