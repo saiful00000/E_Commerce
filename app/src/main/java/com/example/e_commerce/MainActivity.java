@@ -223,28 +223,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.d_menu_cart_id:
+                drawerLayout.closeDrawers();
                 startActivity(new Intent(MainActivity.this, CartListActivity.class));
                 return true;
             case R.id.d_menu_order_id:
                 toast("order");
+                drawerLayout.closeDrawers();
                 return true;
             case R.id.d_menu_settings_id:
                 toast("settings");
+                drawerLayout.closeDrawers();
                 return true;
             case R.id.d_menu_logout_id:
                 userSignOut();
                 return true;
             case R.id.nav_laptop_menu_item_id:
-                toast("laptop");
+                category = "laptop";
+                showProductOnRecyClerView();
+                drawerLayout.closeDrawers();
                 return true;
             case R.id.nav_desktop_menu_item_id:
-                toast("desktop");
+                category = "desktop";
+                showProductOnRecyClerView();
+                drawerLayout.closeDrawers();
                 return true;
             case R.id.nav_android_menu_item_id:
-                toast("android");
+                category = "android";
+                showProductOnRecyClerView();
+                drawerLayout.closeDrawers();
                 return true;
             case R.id.nav_iphone_menu_item_id:
-                toast("iphone");
+                category = "iphone";
+                showProductOnRecyClerView();
+                drawerLayout.closeDrawers();
                 return true;
             default:
                 return false;
