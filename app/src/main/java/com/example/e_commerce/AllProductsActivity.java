@@ -46,6 +46,8 @@ public class AllProductsActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("All Products");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -98,6 +100,13 @@ public class AllProductsActivity extends AppCompatActivity {
                 };
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -155,6 +164,8 @@ public class AllProductsActivity extends AppCompatActivity {
 
         popupMenu.show();
     }
+
+
 
     public void showToast(String message){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();

@@ -237,6 +237,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.d_menu_logout_id:
                 userSignOut();
                 return true;
+            case R.id.all_menu_item_id:
+                drawerLayout.closeDrawers();
+                category = "";
+                showProductOnRecyClerView();
+                return true;
             case R.id.nav_laptop_menu_item_id:
                 category = "laptop";
                 showProductOnRecyClerView();

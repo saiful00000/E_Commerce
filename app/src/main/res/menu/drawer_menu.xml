@@ -22,6 +22,9 @@
 
         <menu>
 
+            <item
+                android:id="@+id/all_menu_item_id"
+                android:title="     All"/>
             <item android:id="@+id/nav_laptop_menu_item_id"
                 android:title="     Laptop"/>
             <item android:id="@+id/nav_desktop_menu_item_id"
