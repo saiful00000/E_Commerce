@@ -2,6 +2,7 @@ package com.example.e_commerce;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,7 @@ import java.util.Map;
 
 public class ProductsDetailsActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
     private ImageView productImageView;
     private TextView productNameTv, productPriceTv, productDescriptionTv, productBrandTv;
     private FloatingActionButton cartButton;
@@ -52,6 +54,7 @@ public class ProductsDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_details);
 
+        toolbar = findViewById(R.id.prod_details_toolbarId);
         productImageView = findViewById(R.id.dprod_image_view_id);
         productNameTv = findViewById(R.id.dprod_name_tv_id);
         productBrandTv = findViewById(R.id.dprod_brand_tv_id);
@@ -60,11 +63,17 @@ public class ProductsDetailsActivity extends AppCompatActivity {
         numberButton = findViewById(R.id.delegation_number_button_id);
         addToCartButton = findViewById(R.id.add_to_cart_btn_id);
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         productKey = getIntent().getStringExtra("prodKey");
 
         cartReference = FirebaseDatabase.getInstance().getReference().child("Cart");
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserId = firebaseAuth.getUid();
+
+
 
         getProductDetails();
 
@@ -72,6 +81,13 @@ public class ProductsDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addItemToTheCart();
+            }
+        });
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
@@ -129,8 +145,8 @@ public class ProductsDetailsActivity extends AppCompatActivity {
 
                     Picasso.get().load(product.getImage()).into(productImageView);
                     productNameTv.setText(product.getName());
-                    productBrandTv.setText(product.getBrand());
-                    productPriceTv.setText(product.getPrice());
+                    productBrandTv.setText("Brand: " + product.getBrand());
+                    productPriceTv.setText("Price: "+product.getPrice() + " tk");
                     productDescriptionTv.setText(product.getDescription());
                 }
             }
