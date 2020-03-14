@@ -44,6 +44,7 @@ public class ProductsDetailsActivity extends AppCompatActivity {
     private String currentDate;
     private String currentTime;
     private String currentUserId;
+    private String price;
 
     private DatabaseReference cartReference;
     private FirebaseAuth firebaseAuth;
@@ -106,7 +107,7 @@ public class ProductsDetailsActivity extends AppCompatActivity {
         //map.put("category", );
         map.put("name", productNameTv.getText().toString());
         map.put("brand", productBrandTv.getText().toString());
-        map.put("price", productPriceTv.getText().toString());
+        map.put("price", price);
         map.put("description", productDescriptionTv.getText().toString());
         map.put("quantity", numberButton.getNumber());
         map.put("date", currentDate);
@@ -142,11 +143,12 @@ public class ProductsDetailsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     Product product = dataSnapshot.getValue(Product.class);
+                    price = product.getPrice();
 
                     Picasso.get().load(product.getImage()).into(productImageView);
                     productNameTv.setText(product.getName());
                     productBrandTv.setText("Brand: " + product.getBrand());
-                    productPriceTv.setText("Price: "+product.getPrice() + " tk");
+                    productPriceTv.setText("Price: "+ price + " tk");
                     productDescriptionTv.setText(product.getDescription());
                 }
             }

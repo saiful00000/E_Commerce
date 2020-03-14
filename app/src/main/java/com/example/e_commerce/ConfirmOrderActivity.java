@@ -32,7 +32,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     private String currentUserId, currentDate, currentTime;
 
     private FirebaseAuth firebaseAuth;
-    private DatabaseReference orderReference;
+    private DatabaseReference orderReference, userSideCartRef, adminSideCartRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,8 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserId = firebaseAuth.getUid();
         orderReference = FirebaseDatabase.getInstance().getReference().child("OrderOnAdminSide");
+        userSideCartRef = FirebaseDatabase.getInstance().getReference().child("Cart").child("UserView");
+        adminSideCartRef = FirebaseDatabase.getInstance().getReference().child("Cart").child("AdminView");
 
         price = getIntent().getStringExtra("price");
 
@@ -99,7 +101,9 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
+                                removeProductFromCart();
                                 Toast.makeText(ConfirmOrderActivity.this, "Order placed", Toast.LENGTH_SHORT).show();
+                                finish();
                                 //TODO delete cart list
                             } else {
                                 Log.e("productUploadError", task.getException().toString());
@@ -110,5 +114,20 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
 
         }
+    }
+
+    private void removeProductFromCart() {
+           userSideCartRef
+                   .child(currentUserId)
+                   .removeValue()
+                   .addOnCompleteListener(new OnCompleteListener<Void>() {
+                       @Override
+                       public void onComplete(@NonNull Task<Void> task) {
+                           if (task.isSuccessful()) {
+                               Log.i("user_cart_removal", "order placed and product removed from user side cart");
+                           }
+
+                       }
+                   });
     }
 }

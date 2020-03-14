@@ -10,7 +10,7 @@
             <item
                 android:id="@+id/d_menu_order_id"
                 android:icon="@drawable/ic_bookmark_order_black_24dp"
-                android:title="Orders" />
+                android:title="My Orders" />
 
         </menu>
     </item>

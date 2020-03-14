@@ -3,40 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".CartListActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:gravity="center"
+        app:title="Your Cart"
+        android:id="@+id/cart_toolbar_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        />
 
 
     <TextView
         android:id="@+id/c_price_tv_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total Price = "
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_orange_dark"
+        android:layout_below="@+id/cart_toolbar_id"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        />
+        android:gravity="center_horizontal"
+        android:text="Total Price = "
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_orange_dark" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/c_recycler_view_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/c_price_tv_id"
         android:layout_above="@+id/c_order_button_id"
-        />
+        android:layout_below="@+id/c_price_tv_id"
+        android:layout_marginTop="10dp" />
 
 
     <Button
-        android:layout_margin="20dp"
         android:id="@+id/c_order_button_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/editetext_background"
-        android:text=" Make Order"
         android:layout_alignParentBottom="true"
-        android:textAllCaps="false"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/editetext_background"
         android:elevation="10dp"
-        android:textColor="@android:color/holo_red_dark"
-        />
+        android:text=" Make Order"
+        android:textAllCaps="false"
+        android:textColor="@android:color/holo_red_dark" />
 
 </RelativeLayout>
