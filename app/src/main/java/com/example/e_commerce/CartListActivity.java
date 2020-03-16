@@ -98,12 +98,13 @@ public class CartListActivity extends AppCompatActivity {
                     protected void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, int i, @NonNull final CartItem cartItem) {
 
                         int price = Integer.parseInt(cartItem.getPrice()) * Integer.parseInt(cartItem.getQuantity());
+                        System.out.println("Quantity "+ cartItem.getQuantity());
                         totalPriceOfAllProduct += price;
 
                         prodPriceTv.setText("Total = " + totalPriceOfAllProduct + " tk");
 
                         cartViewHolder.productNameTv.setText(cartItem.getName());
-                        cartViewHolder.productPriceTv.setText("Price "+ price +" tk");
+                        cartViewHolder.productPriceTv.setText("Price "+ cartItem.getPrice() +" tk");
                         cartViewHolder.productQuantityTv.setText(cartItem.getQuantity() + " piece");
                         
                         cartViewHolder.itemView.setOnClickListener(new View.OnClickListener() {

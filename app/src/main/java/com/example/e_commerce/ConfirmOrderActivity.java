@@ -94,6 +94,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             order.put("adress", address);
             order.put("date", currentDate);
             order.put("time", currentTime);
+            order.put("totalPrice", price);
 
 
             orderReference.child(currentUserId).updateChildren(order)

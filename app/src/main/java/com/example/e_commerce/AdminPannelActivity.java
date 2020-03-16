@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminPannelActivity extends AppCompatActivity {
 
-    private Button allProductBtn, addProductBtn;
+    private Button allProductBtn, addProductBtn, orderBtn;
     private Toolbar toolbar;
 
     private FirebaseAuth firebaseAuth;
@@ -31,6 +31,7 @@ public class AdminPannelActivity extends AppCompatActivity {
 
         allProductBtn = findViewById(R.id.all_products_btn_id);
         addProductBtn = findViewById(R.id.add_product_btn_id);
+        orderBtn = findViewById(R.id.orders_btn_id);
         toolbar = findViewById(R.id.admn_toolbar_id);
 
         setSupportActionBar(toolbar);
@@ -47,6 +48,13 @@ public class AdminPannelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AdminPannelActivity.this, AddANewProductActivity.class));
+            }
+        });
+
+        orderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminPannelActivity.this, OrdersInAdminSideActivity.class));
             }
         });
 
