@@ -24,7 +24,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:gravity="center_horizontal"
-        android:text="Total Price = "
         android:textAlignment="center"
         android:textColor="@android:color/holo_orange_dark" />
 

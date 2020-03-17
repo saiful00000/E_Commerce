@@ -28,7 +28,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     private EditText nameEt, phoneEt, cityEt, areaEt, sectorEt, roadEt, houseEt;
     private Button confirmOrderBtn;
 
-    private String price;
+    private int price, itemCnt;
     private String currentUserId, currentDate, currentTime;
 
     private FirebaseAuth firebaseAuth;
@@ -49,15 +49,16 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         houseEt = findViewById(R.id.riceiver_housenumber_et_id);
         confirmOrderBtn = findViewById(R.id.order_confirm_button_id);
 
-
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserId = firebaseAuth.getUid();
         orderReference = FirebaseDatabase.getInstance().getReference().child("OrderOnAdminSide");
         userSideCartRef = FirebaseDatabase.getInstance().getReference().child("Cart").child("UserView");
         adminSideCartRef = FirebaseDatabase.getInstance().getReference().child("Cart").child("AdminView");
 
-        price = getIntent().getStringExtra("price");
+        itemCnt = getIntent().getIntExtra("item", 0);
+        price = getIntent().getIntExtra("price", 0);
 
+        totalPriceTv.setText(Integer.toString(price) + " tk");
 
         confirmOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +87,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             SimpleDateFormat timeFormate = new SimpleDateFormat("HH:mm:ss a");
             currentTime = timeFormate.format(calendar.getTime());
 
-            String address = city +", "+ area +", "+ sector +", "+ road +", "+ house;
+            String address = "city: " +city + ", "+ "area: " + area +", "+ "sector: " + sector +", "+ "road: " + road +", "+"house: " + house;
 
             Map<String, Object> order = new HashMap<>();
             order.put("name", name);
@@ -95,6 +96,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             order.put("date", currentDate);
             order.put("time", currentTime);
             order.put("totalPrice", price);
+            order.put("totalItem", itemCnt);
 
 
             orderReference.child(currentUserId).updateChildren(order)

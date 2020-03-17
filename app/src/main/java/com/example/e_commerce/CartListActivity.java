@@ -56,10 +56,8 @@ public class CartListActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
 
         prodOrderButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +75,7 @@ public class CartListActivity extends AppCompatActivity {
     private void proccessOrder() {
         Intent intent = new Intent(CartListActivity.this, ConfirmOrderActivity.class);
         intent.putExtra("price", totalPriceOfAllProduct);
+        intent.putExtra("item", itemCnt);
         startActivity(intent);
     }
 
@@ -98,7 +97,6 @@ public class CartListActivity extends AppCompatActivity {
                     protected void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, int i, @NonNull final CartItem cartItem) {
 
                         int price = Integer.parseInt(cartItem.getPrice()) * Integer.parseInt(cartItem.getQuantity());
-                        System.out.println("Quantity "+ cartItem.getQuantity());
                         totalPriceOfAllProduct += price;
 
                         prodPriceTv.setText("Total = " + totalPriceOfAllProduct + " tk");
@@ -126,7 +124,7 @@ public class CartListActivity extends AppCompatActivity {
                     @Override
                     public int getItemCount() {
                         itemCnt = super.getItemCount();
-                        return super.getItemCount();
+                        return itemCnt;
                     }
 
                     @NonNull

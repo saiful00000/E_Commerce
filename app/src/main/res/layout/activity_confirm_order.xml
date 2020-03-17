@@ -14,7 +14,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
-        android:text="Total price"
+        android:text="Total price "
         android:textAlignment="center"
         android:textColor="@android:color/holo_orange_dark"
 
@@ -38,10 +38,12 @@
                 android:background="@drawable/editetext_background"
                 android:hint="Product reciver name"
                 android:padding="5dp"
+                android:text="saiful"
 
                 />
 
             <EditText
+                android:text="01827504142"
                 android:id="@+id/riceiver_phone_et_id"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -55,6 +57,7 @@
                 />
 
             <EditText
+                android:text="dhaka"
                 android:id="@+id/riceiver_city_et_id"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -68,6 +71,7 @@
                 />
 
             <EditText
+                android:text="rampura"
                 android:id="@+id/riceiver_area_et_id"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -81,6 +85,7 @@
                 />
 
             <EditText
+                android:text="12"
                 android:id="@+id/riceiver_sector_et_id"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -94,6 +99,7 @@
                 />
 
             <EditText
+                android:text="3"
                 android:id="@+id/riceiver_roadnumber_et_id"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -107,6 +113,7 @@
                 />
 
             <EditText
+                android:text="5"
                 android:id="@+id/riceiver_housenumber_et_id"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
